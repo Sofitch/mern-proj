@@ -1,6 +1,7 @@
 require('dotenv').config() // attaches the env variables on .env to the global process object
 
 const express = require('express') // require the express package
+const mongoose = require('mongoose') 
 const choreoRoutes =  require('./routes/choreos')
 
 // create express app
@@ -16,8 +17,16 @@ app.use((req, res, next) => {
 // routes - react to requests
 app.use('/api/choreos', choreoRoutes)
 
-// listen for requests
-app.listen(process.env.PORT, () => {
-    console.log("listening on port", process.env.PORT)
-})
+// connect to db
+mongoose.connect(process.env.MONGO_URI) // assynchronous - returns a promise
+    .then(() => { // fire a function when its complete
+        app.listen(process.env.PORT, () => { // listen for requests (only when connected to db)
+            console.log("connected to db & listening on port", process.env.PORT)
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+
 

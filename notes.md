@@ -9,7 +9,7 @@ The MERN stack is 4 technologies that we can use together to make an interactive
 - To show data or authenticate users, we send a request to the backend. The backend is an Express app running in a Node Js environment, which interacts with the database to get or update data.
     - Express is a framework for Node to facilitate creating APIs
 
-- MongoDB is a noSLQ database
+- MongoDB is a noSLQ database - instead of using tables and columns, it uses documents that resemble JSON objects, which makes it easy to use with a node application
 
 ## First steps
 
@@ -41,3 +41,14 @@ Endpoints: GET /choreos, POST /choreos, GET /choreos/:id, DELETE /choreos/:id, P
 3. In the **server** file, we then need to declare the use of the routes file, and we define a namespace fot those routes.
 
 4. Finally, we need to use a built in express function that will look for a "body" in every request and, if it finds it, puts the data into the request object so that we can access it.
+
+
+## Setting up the database
+
+We could install mongodb locally, but we will use mongodb atlas which allows us to configure and host a mongodb database online.
+
+1. We created the database, an admin user, an then we click ```connect > drivers``` to copy the connection string. We then add this string to the **.env** file.
+
+2. We install mongoose package. This is an ODM (object-data modeling) library - it allows us to read and right documents on mongodb, and declare models and schemas to ensure a more structured db. Finally, it allows us to connect to the database from a js file.
+
+3. To connect to the database, we require mongoose and then use ```mongoose.connect([conn_string])```. Since this method is asynchronous by nature, we move the app **listening** function inside the **then** method, so that it only listens once the db is connected.
