@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 app.use('/api/choreos', choreoRoutes)
 
 // connect to db
-mongoose.connect(process.env.MONGO_URI) // assynchronous - returns a promise
+mongoose.connect(process.env.MONGO_URI) // asynchronous - returns a promise
     .then(() => { // fire a function when its complete
         app.listen(process.env.PORT, () => { // listen for requests (only when connected to db)
             console.log("connected to db & listening on port", process.env.PORT)

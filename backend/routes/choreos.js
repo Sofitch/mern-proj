@@ -1,22 +1,21 @@
 const express = require('express')
+const Choreo = require('../models/choreoModel')
+const {
+    getChoreos,
+    getChoreo,
+    createChoreo,
+} = require('../controllers/choreoController')
 
 const router = express.Router() 
 
 // GET all choreos
-router.get("/", (req, res) => {
-    res.json({msg: "GET all choreos"})
-})
+router.get("/", getChoreos)
 
 // GET a single choreo
-router.get("/:id", (req, res) => {
-    res.json({msg: "GET a single choreo"})
-})
+router.get("/:id", getChoreo)
 
 // POST a new choreo
-router.post("/", (req, res) => {
-    // req.body
-    res.json({msg: "POST a new choreo"})
-})
+router.post("/", createChoreo)
 
 // DELETE a choreo
 router.delete("/:id", (req, res) => {
