@@ -74,3 +74,17 @@ We will create our react app. We do this by running ```npx create-react-app fron
 4. To create a header/ navbar, we create a **compontents** folder that will keep our reusable components. We use a **Link** which turns into an anchor tag, handling the routing locally in the browser. We export the navbar and put it on the App file, outside the pages, but inside the BrowserRouter so that the link works.
 
 5. Finally, we want to add some basic CSS (inside index.css).
+
+## Fetching data from the backend
+
+We want to fetch all the choreos on the homepage.
+
+1. To do that, we will use the useEffect and the useState hook. The useEffect hook fires a function once the homepage is rendered. Therefore, we set it to fire a function that fetches the choreos and, using the useState hook, updates the state.
+
+2. Then, update the page template to cycle through the choreos and display them.
+
+3. To display the choreos, we create a ChoreoDetails file inside the components folder, in which we create a function that describes the template for showing the choreo details. This function needs to have access to a choreo object, therefore, we pass it through from the **home** file using ```<ChoreoDetails key={choreo._id} choreo={choreo}/>```.
+
+4. Finally, we style the homepage on the index.css file.
+
+Note: So that the frontend and backend can communicate, we need to set up a proxy on the frontend that proxys any request that it doesn't recognize to the api server at the backend address.
