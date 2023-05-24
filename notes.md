@@ -61,3 +61,16 @@ We could install mongodb locally, but we will use mongodb atlas which allows us 
 
 The controller functions' notes are directly commented on the file.
 
+## Setting up the frontend
+
+We will create our react app. We do this by running ```npx create-react-app frontend```. Then, we install the react router dom package (```npm install react-router-dom```) so that we can have different pages in our app.
+
+1. In the main file **App.js**, we need to import BrowserRouter (to wrap everywhere we want to use the router), the Routes (that wraps the individual routes), and the Route component (to create a single route). Then, we define the first route.
+
+2. We create a pages folder, where we will create our pages to be rendered. We create a simple react page, and then export it to be used in Route element on the App file.
+
+3. We run the frontend with ```npm start```.
+
+4. To create a header/ navbar, we create a **compontents** folder that will keep our reusable components. We use a **Link** which turns into an anchor tag, handling the routing locally in the browser. We export the navbar and put it on the App file, outside the pages, but inside the BrowserRouter so that the link works.
+
+5. Finally, we want to add some basic CSS (inside index.css).
