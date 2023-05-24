@@ -4,6 +4,8 @@ const {
     getChoreos,
     getChoreo,
     createChoreo,
+    deleteChoreo,
+    updateChoreo
 } = require('../controllers/choreoController')
 
 const router = express.Router() 
@@ -18,14 +20,10 @@ router.get("/:id", getChoreo)
 router.post("/", createChoreo)
 
 // DELETE a choreo
-router.delete("/:id", (req, res) => {
-    res.json({msg: "DELETE a choreo"})
-})
+router.delete("/:id", deleteChoreo)
 
 // UPDATE a choreo
-router.patch("/:id", (req, res) => {
-    res.json({msg: "UPDATE a choreo"})
-})
+router.patch("/:id", updateChoreo)
 
 // export the router to be imported and used in server.js
 module.exports = router

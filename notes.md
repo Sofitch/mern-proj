@@ -15,7 +15,7 @@ The MERN stack is 4 technologies that we can use together to make an interactive
 
 - Install NodeJS from nodejs.org
 
-- Create new folders for Frontend and Backend, and create a **server** js file in the backend folder (which will be the entry for the backend app)
+- Create a new folder for Backend, and create a **server** js file in the backend folder (which will be the entry for the backend app)
 
 - Create a package.json file inside the backend, where we will keep track of dependencies and register our custom scripts. This is done by running ````npm init```.
 
@@ -58,3 +58,6 @@ We could install mongodb locally, but we will use mongodb atlas which allows us 
 1. We start by creating a schema and a model for our db. We create a **models** folder and a **choreoModel.js** file inside it. The schema defines the structure, while the model creates an instance that we can interact with.
 
 2. We then create a controller file to store the controller functions for each route. We can then export those functions and import them in the choreos.js file to use when a request is received.
+
+The controller functions' notes are directly commented on the file.
+
