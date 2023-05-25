@@ -1,4 +1,4 @@
-const choreoDetails = ({ choreo }) => {
+const ChoreoDetails = ({ choreo }) => {
     return (
         <div className="choreo-details">
             <h4>{choreo.title}</h4>
@@ -9,4 +9,4 @@ const choreoDetails = ({ choreo }) => {
     )
 }
 
-export default choreoDetails
+export default ChoreoDetails

@@ -88,3 +88,16 @@ We want to fetch all the choreos on the homepage.
 4. Finally, we style the homepage on the index.css file.
 
 Note: So that the frontend and backend can communicate, we need to set up a proxy on the frontend that proxys any request that it doesn't recognize to the api server at the backend address.
+
+## Adding data from the frontend
+
+We will add a form on the homepage that allows us to add a new choreo.
+
+1. We start by creating a **ChoreoForm** file. We will need a state for each of the properties of Choreo. Whenever we type into the fields, the state will then be updated.
+
+2. We create an html form, with a title, a submit button, and, for each field, a label and an input. For the button to work, we add a 'onSubmit' attribute on the form that will call a 'handleFunction'. To update the state, we set an 'onChange' attribute on each input that receives the event and sets the field value.
+
+3. We define 'handleFunction' to create a choreo object from the fields, and to send a request to the createChoreo endpoint. Note that we need to set a header to specify the content type to be json. We then check if the response is ok, and if so, we reset the fields. If not, we print the error.
+
+4. Finally, we export the form and insert it on the homepage.
+

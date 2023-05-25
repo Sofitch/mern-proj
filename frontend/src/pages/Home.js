@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 // components
 import ChoreoDetails from '../components/ChoreoDetails'
+import ChoreoForm from '../components/ChoreoForm'
 
 const Home = () => {
     const [choreos, setChoreos] = useState(null)
@@ -24,6 +25,9 @@ const Home = () => {
                 { choreos && choreos.map((choreo) => (
                     <ChoreoDetails key={choreo._id} choreo={choreo}/>
                 ))}
+            </div>
+            <div className='choreoForm'>
+                <ChoreoForm/>
             </div>
         </div>
     )
