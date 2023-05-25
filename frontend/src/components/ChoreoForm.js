@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { useChoreosContext } from '../hooks/useChoreosContextHook'
 
 const ChoreoForm = () => {
+    const {dispatch} = useChoreosContext()
+
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [difficulty, setDifficulty] = useState('')
@@ -25,6 +28,8 @@ const ChoreoForm = () => {
             setDifficulty('')
             setError(null)
             console.log('new choreo created')
+            // a successful createChoreo returns the new choreo
+            dispatch({type: 'CREATE_CHOREO', payload: json})
         }
         else { setError(json.error) }
     }

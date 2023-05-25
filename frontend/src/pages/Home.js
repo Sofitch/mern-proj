@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useChoreosContext } from '../hooks/useChoreosContextHook'
 
 // components
 import ChoreoDetails from '../components/ChoreoDetails'
 import ChoreoForm from '../components/ChoreoForm'
 
 const Home = () => {
-    const [choreos, setChoreos] = useState(null)
+    const {choreos, dispatch} = useChoreosContext()
 
     useEffect(() => {
         const fetchChoreos = async () => { /* avoid main function from being async */
@@ -13,7 +14,7 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setChoreos(json) /* updates 'choreos' */
+                dispatch({type: 'SET_CHOREOS', payload: json}) /* updates 'choreos' */
             }
         }
         fetchChoreos()

@@ -101,3 +101,19 @@ We will add a form on the homepage that allows us to add a new choreo.
 
 4. Finally, we export the form and insert it on the homepage.
 
+## React Context
+
+We want to sync our local react state to the database, and update the state locally when we add a new choreo. React context allows us to keep a global state, without the need of passing a 'state' through every component.
+
+1. We start by creating a context folder on the frontend and a choreos file inside it. We import the createContext function from react.
+
+2. Our context has a **Provider** property that needs to wrap every component that needs access to the context, which in our case will be the whole App. To do this, we create a custom **ContextProvider** component, import it in our index.js file, and wrap it around the **App** component. Then, in the context file, we can now access **App** by refering to the **children** prop of the custom **ContextProvider**. Finally, we set our **ContextProvider** component to return a template that is simply our **Context.Provider** around the **children** prop.
+
+3. We want to add a state value to the context. To do this, we will use a **useReducer** hook, which returns a state and a dispatch on creation. To update the state, we call the dispatch function and give it an action - the type of the action (a descriptive string), and the payload of that action (any data we need for the action). The dispatch function will then call our reducer function. To link this state to our context, we set the provider's value to be **{state, dispatch}**.
+
+4.  We then need to define our reducer. This is a simple function that will receive the current state and an action, and then alters the state according to the received action. If the action type is not recognized, it should ignore the action.
+
+5. Now we need to create a custom **useChoreosContext** hook in a new **hooks** folder, which we will use in other files to actually access the context. This is a simple function that calls the react hook **useContext**, and returns the context if inside a **ChoreosContextProvider**.
+
+6. Finally, we import this hook in the homepage file, and replace our previous react **useState** hook with the new. Then, if the fetch response is ok, we instead call the dispatch function and pass the action as ```{type: 'SET_CHOREOS', payload: choreos_json}```. We repeat the process for the choreoForm component, so that it updates the state when a new choreo is created.
+
