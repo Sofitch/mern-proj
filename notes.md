@@ -117,3 +117,25 @@ We want to sync our local react state to the database, and update the state loca
 
 6. Finally, we import this hook in the homepage file, and replace our previous react **useState** hook with the new. Then, if the fetch response is ok, we instead call the dispatch function and pass the action as ```{type: 'SET_CHOREOS', payload: choreos_json}```. We repeat the process for the choreoForm component, so that it updates the state when a new choreo is created.
 
+
+## Refining the app
+
+### Delete button
+
+We add a delete button by simply adding a span to the ChoreoDetails component, and defining a function that runs on a click event. This function then sends a request to the backend to delete the choreo, awaits the response, and, if the response is ok, calls the dispatch function to update the context. We also need to add an accepted case on the dispatch function, so that it can process the delete action. Finally, we style the button.
+
+### Error messages
+
+We want to refine the error messages to something more user-friendly. This is done by checking for errors on the **choreoController** file in the backend and sending custom error messages, and then checking for those messages on the frontend. In this case, we also create a new variable **emptyFields** to pass on the info regarding which field is empty, so that we can highlight it to the user. We then add a dynamic class name to each input field, so that if it is empty, it will be set as error class.
+
+### Delete icon
+
+To add a trashcan icon, we add a link to the **index.html** file on the public folder, which links to the icon library we want to use. Then, on the property where we want to use the icon, we set the class name to match the library name, and then set the title to the specific icon's name. The trashcan corresponds to the word 'Delete'.
+
+### Date format
+
+To format the date, we will be using a package called 'date-fns', which we install using npm and comes with a lot of functions to display the date. We just import and use the function **formatDateToNow** in the component where the date is.
+
+## Authentication
+
+There is a following series covering authentication on this app, where each user will have their own choreos.

@@ -18,7 +18,7 @@ const Home = () => {
             }
         }
         fetchChoreos()
-    }, []) /* empty dependecy array means it only fires once, when the component first renders */
+    }, [dispatch]) /* dependency array: fires when the component renders + when dispatch changes */
 
     return (
         <div className="home">

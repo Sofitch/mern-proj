@@ -27,6 +27,17 @@ const getChoreo = async (req, res) => {
 // create a new choreo
 const createChoreo = async (req, res) => {
     const {title, author, difficulty} = req.body
+    
+    // checking for errors
+    let emptyFields = []
+    if (!title) { emptyFields.push('title') }
+    if (!author) { emptyFields.push('author') }
+    if (!difficulty) { emptyFields.push('difficulty') }
+    if (emptyFields.length > 0) {
+        errorMsg = 'Please fill in all the fields.'
+        return res.status(400).json({error: errorMsg, emptyFields})
+    }
+
     // add doc to db 
     try {
         const choreo = await Choreo.create({title, author, difficulty}) // asynchronous

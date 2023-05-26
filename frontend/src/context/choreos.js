@@ -8,6 +8,8 @@ export const choreoReducer = (state, action) => {
             return { choreos: action.payload }
         case 'CREATE_CHOREO':
             return { choreos: [action.payload, ...state.choreos] }
+        case 'DELETE_CHOREO':
+            return { choreos: state.choreos.filter((c) => c._id !== action.payload._id) }
         default:
             return state
     }
